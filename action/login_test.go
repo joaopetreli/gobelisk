@@ -51,7 +51,7 @@ func TestLoginResponseString(t *testing.T) {
 
 func TestLoginResponseResponseWithInvalidResponse(t *testing.T) {
 	lr := new(LoginResponse)
-	err := lr.Response("Invalid response.")
+	err := lr.ResponseParser("Invalid response.")
 	if err == nil {
 		t.Fail()
 	}
@@ -60,7 +60,7 @@ func TestLoginResponseResponseWithValidResponse(t *testing.T) {
 	lr := new(LoginResponse)
 	response := fmt.Sprintf("Response: Success\n" +
 		"Message: Authentication accepted\n\n")
-	err := lr.Response(response)
+	err := lr.ResponseParser(response)
 	if err != nil {
 		t.Fail()
 	}
