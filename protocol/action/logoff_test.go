@@ -29,12 +29,12 @@ func TestLogoffResponseParseSuccess(t *testing.T) {
 	}
 }
 
-func TestLogoffResponseParseFailure(t *testing.T) {
+func TestLogoffResponseParseInvalidResponse(t *testing.T) {
 	l := NewLogoff()
 	response := "Invalid response"
 
 	if err := l.Parse(response); err != protocol.ErrInvalidResponse {
-		t.Error(err)
+		t.Error("Expected protocol.ErrInvalidResponse, but got", err)
 	}
 
 	if response != l.RawResponse {
