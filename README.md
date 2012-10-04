@@ -8,7 +8,7 @@ Documentation
 
 ### How do I connect to a server running Asterisk Manager API?
 
-It is possible to connect to a server running Asterisk Manager API through the function `Connect` inside the `manager` package, like depicted bellow:
+It is possible to connect to a server running Asterisk Manager API through the function `Connect` inside the `manager` package, like depicted below:
 
     package main
 
