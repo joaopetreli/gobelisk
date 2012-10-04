@@ -20,6 +20,7 @@ type LogoffResponse struct {
 
 func NewLogoff() Logoff {
 	var logoff Logoff
+
 	logoff.Action = "Logoff"
 	logoff.callback = func(l Logoff) {
 		fmt.Print(l.RawResponse)
