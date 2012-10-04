@@ -2,7 +2,6 @@ package manager
 
 import (
 	"bufio"
-	"fmt"
 	"io"
 	"strings"
 )
