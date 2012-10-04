@@ -22,7 +22,7 @@ func NewLogoff() Logoff {
 	var logoff Logoff
 	logoff.Action = "Logoff"
 	logoff.callback = func(l Logoff) {
-		fmt.Println(l.RawResponse)
+		fmt.Print(l.RawResponse)
 	}
 
 	return logoff

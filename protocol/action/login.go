@@ -28,7 +28,7 @@ func NewLogin(username, secret string) Login {
 	login.Username = username
 	login.Secret = secret
 	login.callback = func(l Login) {
-		fmt.Println(l.RawResponse)
+		fmt.Print(l.RawResponse)
 	}
 
 	return login
