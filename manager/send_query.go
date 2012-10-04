@@ -7,7 +7,7 @@ import (
 	"net"
 )
 
-func sendQuery(conn net.Conn, act action.Action) error {
+func SendQuery(conn net.Conn, act action.Action) error {
 	_, err := fmt.Fprint(conn, act.Query())
 	if err != nil {
 		return err
@@ -18,7 +18,10 @@ func sendQuery(conn net.Conn, act action.Action) error {
 		return err
 	}
 
-	act.Parse(response)
+	if err = act.Parse(response); err != nil {
+		return err
+	}
+
 	act.Callback()
 
 	return nil
