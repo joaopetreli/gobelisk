@@ -33,7 +33,6 @@ func readBuffer(rd *bufio.Reader) (string, error) {
 		rawPart := make([]byte, 500)
 		bytesRead, err := rd.Read(rawPart)
 		if bytesRead == 0 && err == io.EOF {
-			fmt.Println("asd")
 			break
 		}
 
