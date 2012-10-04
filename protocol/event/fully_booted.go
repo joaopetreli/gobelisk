@@ -1,6 +1,7 @@
 package event
 
 import (
+	"fmt"
 	"gobelisk/protocol"
 	"strings"
 )
@@ -10,7 +11,17 @@ type FullyBooted struct {
 	Privilege   string
 	Status      string
 	RawResponse string
-	callback    func()
+	callback    func(FullyBooted)
+}
+
+func NewFullyBooted() FullyBooted {
+	var fullyBooted FullyBooted
+	fullyBooted.Event = "FullyBooted"
+	fullyBooted.callback = func(fb FullyBooted) {
+		fmt.Print(fb.RawResponse)
+	}
+
+	return fullyBooted
 }
 
 func (fb *FullyBooted) Parse(response string) error {
@@ -29,9 +40,9 @@ func (fb *FullyBooted) Parse(response string) error {
 }
 
 func (fb FullyBooted) Callback() {
-	fb.callback()
+	fb.callback(fb)
 }
 
-func (fb *FullyBooted) SetCallback(f func()) {
+func (fb *FullyBooted) SetCallback(f func(FullyBooted)) {
 	fb.callback = f
 }
