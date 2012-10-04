@@ -43,7 +43,8 @@ func (l *LoginResponse) Parse(response string) error {
 	l.Success = false
 	l.RawResponse = response
 
-	if len(response) != 55 {
+	responseLen := len(response)
+	if responseLen != 55 && responseLen != 51 {
 		return protocol.ErrInvalidResponse
 	}
 
@@ -55,6 +56,10 @@ func (l *LoginResponse) Parse(response string) error {
 
 	l.Response = lines[0][10:]
 	l.Message = lines[1][9:]
+
+	if l.Success == false {
+		return protocol.ErrAuthenticationFailed
+	}
 
 	return nil
 }
