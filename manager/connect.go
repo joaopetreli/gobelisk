@@ -52,6 +52,7 @@ func Connect(host, port string, login *action.Login) (conn net.Conn, fullyBooted
 	// call callback from login
 	login.Callback()
 
+	fullyBooted = event.NewFullyBooted()
 	// read the dispatched event FullyBooted
 	if fullyBooted.Parse(response[55:]); err != nil {
 		return
