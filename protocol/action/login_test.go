@@ -67,3 +67,12 @@ func TestLoginResponseParseFailure(t *testing.T) {
 		t.Errorf("Expected '%s'\nbut got: '%s'", "Authentication failed", l.Message)
 	}
 }
+
+func TestLoginResponseParseInvalidResponse(t *testing.T) {
+	response := "Invalid response."
+	l := NewLogin("username", "secret")
+
+	if err := l.Parse(response); err != protocol.ErrInvalidResponse {
+		t.Error("Expected protocol.ErrInvalidResponse, but got", err)
+	}
+}
