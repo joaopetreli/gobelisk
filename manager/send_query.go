@@ -2,12 +2,14 @@ package manager
 
 import (
 	"bufio"
+	"fmt"
 	"gobelisk/protocol/action"
 	"net"
 )
 
 func sendQuery(conn net.Conn, act action.Action) error {
-	if err := writeString(act.Query(), bufio.NewWriter(conn)); err != nil {
+	_, err := fmt.Fprint(conn, act.Query())
+	if err != nil {
 		return err
 	}
 
