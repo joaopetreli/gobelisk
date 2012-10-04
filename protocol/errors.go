@@ -5,5 +5,6 @@ import (
 )
 
 var (
-	ErrInvalidResponse = errors.New("Invalid response.")
+	ErrInvalidResponse      = errors.New("Invalid response.")
+	ErrAuthenticationFailed = errors.New("Authentication failed.")
 )
