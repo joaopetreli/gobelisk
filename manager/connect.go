@@ -22,8 +22,7 @@ func Connect(host, port string, login *action.Login) (conn net.Conn, fullyBooted
 	}
 	fmt.Print(header)
 
-	// do login
-	if err = writeString(login.Query(), bufio.NewWriter(conn)); err !=
+	//do login
 	_, err = fmt.Fprint(conn, login.Query())
 	if err != nil {
 		return
@@ -37,9 +36,10 @@ func Connect(host, port string, login *action.Login) (conn net.Conn, fullyBooted
 
 	// read the total response
 	if len(response) == 55 {
-		remainingResponse, err := readBuffer(bufio.NewReader(conn))
+		var remainingResponse string
+		remainingResponse, err = readBuffer(bufio.NewReader(conn))
 		if err != nil {
-			return conn, event.FullyBooted{}, err
+			return
 		}
 		response += remainingResponse
 	}
