@@ -1,7 +1,6 @@
 package action
 
 import (
-	"fmt"
 	"gobelisk/protocol"
 	"testing"
 )
@@ -13,8 +12,7 @@ func TestLoginQuery(t *testing.T) {
 		Secret:   "secret",
 	}
 
-	query := fmt.Sprintf("Action: %s\nUsername: %s\nSecret: %s\r\n\r\n",
-		"Login", "username", "secret")
+	query := "Action: Login\nUsername: username\nSecret: secret\r\n\r\n"
 	if query != l.Query() {
 		t.Errorf("Expected: '%s'\nbut got: '%s'", query, l.Query())
 	}
