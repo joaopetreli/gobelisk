@@ -36,7 +36,6 @@ func main() {
 	if *keepAlive {
 		stop := false
 		if *keepAlivetimeout > 0 {
-			fmt.Println(*keepAlivetimeout)
 			go func() {
 				time.Sleep(time.Duration(*keepAlivetimeout) * time.Second)
 				stop = true
@@ -54,4 +53,5 @@ func main() {
 			time.Sleep(1 * time.Second)
 		}
 	}
+
 }
