@@ -15,7 +15,7 @@ It is possible to connect to a server running Asterisk Manager API through the f
     import (
       "fmt"
       "gobelisk/manager"
-      "gobelisk/protocol/actions"
+      "gobelisk/protocol/action"
     )
 
     func main() {
